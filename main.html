@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles_up down.css">
+  <title>Educational Flash card</title>
+</head>
+
+<body>
+    <header>
+        <h1>Educational Flashcard App</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+          <h1 class="display-3">Flash Cards</h1>
+          <h4>Hover on cards to learn about computer specs.</h4>
+  <div id="flashcard-app" class="container">
+
+    <h1></h1>
+
+    <div class="flashcard-form">
+      <label for="front">Front
+        <input v-model="newFront" type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
+      </label>
+      <button v-on:click="addNew">Add a New Card</button>
+      <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
+    </div>
+
+    <ul class="flashcard-list">
+      <li v-on:click="toggleCard(card)" v-for="(card, index) in cards">
+        <transition name="flip">
+          <p v-bind:key="card.flipped" class="card">
+            {{ card.flipped ? card.back : card.front }}
+            <span v-on:click="cards.splice(index, 1)" class="delete-card">X</span>
+          </p>
+
+        </transition>
+
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Educational Flashcard App</p>
+    <p><a href="https://github.com/Ankitprajapati24">Git Hub</a></p>
+    <p><a href="https://www.linkedin.com/in/ankit-prajapati-aa4450283/">linkedin</a></p>
+    <samp><a href="https://linktr.ee/Ankitprajapati24">Contect to ME</a></samp>
+</footer>
+
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
